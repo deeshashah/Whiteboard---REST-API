@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Course Manager</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="courseeditor.style.client.css">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="customNavbar">
+      <a href="../index.html"><i class="fa fa-times"></i></a>&nbsp&nbsp
+      <a class="navbar-brand" href="#">CS5500 Software Engineering Graduate</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="../index.html">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Build <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Pages <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Themes <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Store <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">App <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Settings <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- Side navigation -->
+    <div class="sidenav">
+      <div class="topic">
+        <a href="#">
+        Module-1 Jquery
+        </a>
+        <a href="#"><i class="cross-topic fa fa-times"></i></a>
+      </div>
+      <div class="topic">
+        <a href="#">
+        Module-2 React
+        </a>
+        <a href="#"><i class="cross-topic fa fa-times"></i></a>
+      </div>
+      <div class="topic">
+        <a href="#">
+        Module-3 Redux
+        </a>
+        <a href="#"><i class="cross-topic fa fa-times"></i></a>
+      </div>
+      <div class="topic">
+        <a href="#">
+        Module-4 Native
+        </a>
+        <a href="#"><i class="cross-topic fa fa-times"></i></a>
+      </div>
+      <div class="topic">
+        <a href="#">
+        Module-5 Angular
+        </a>
+        <a href="#"><i class="cross-topic fa fa-times"></i></a>
+      </div>
+      <div class="topic">
+        <a href="#">
+        Module-6 Node
+        </a>
+        <a href="#"><i class="cross-topic fa fa-times"></i></a>
+      </div>
+      <div class="topic">
+        <a href="#">
+        Module-7 Mongo
+        </a>
+        <a href="#"><i class="cross-topic fa fa-times"></i></a>
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-lg btn-secondary">+</button>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="main container container-fluid">
+    <div class="row">
+      <div class="col-md-2">
+        <button type="button" class="btn btn-lg btn-secondary">Topic 1</button>
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-lg btn-secondary">Topic 2</button>
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-lg btn-secondary">Topic 3</button>
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-lg btn-secondary">Topic 4</button>
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-lg btn-secondary">+</button>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-10"></div>
+      <div class="col-md-1">
+        <a href="../courselist/courselist.template.client.html" type="button" class="btn btn-lg btn-success">Save</a>
+      </div>
+      <div class="col-md-1">
+        <div class="form-group">
+          <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="customSwitch1" checked="">
+            <label class="custom-control-label" for="customSwitch1">Preview</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--end of row -->
+    <br>
+    <div class="container widget">
+      <div class="row">
+        <div class="col-md-8">
+          <h3>Heading widget</h3>
+        </div>
+        <div class="col-md-4">
+          <button class="btn btn-warning"> <i class="fa fa-arrow-down"></i> </button>
+          <button class="btn btn-warning"> <i class="fa fa-arrow-up"></i> </button>
+          <select class="inline-select custom-select">
+            <option selected="">Heading</option>
+            <option value="1">List</option>
+            <option value="2">Paragraph</option>
+            <option value="3">Image</option>
+            <option value="3">Link</option>
+          </select>
+          <button class="btn btn-danger"> <i class="fa fa-close"></i> </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Heading text">
+            <br>
+            <div class="form-group">
+              <select class="custom-select">
+                <option selected="">Heading 1</option>
+                <option value="1">Heading 2</option>
+                <option value="2">Heading 3</option>
+                <option value="3">Heading 4</option>
+              </select>
+            </div>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Heading text">
+          </div>
+          <h4>Preview</h4>
+          <h1>Heading text</h1>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="container widget">
+      <div class="row">
+        <div class="col-md-8">
+          <h3>List widget</h3>
+        </div>
+        <div class="col-md-4">
+          <button class="btn btn-warning"> <i class="fa fa-arrow-down"></i> </button>
+          <button class="btn btn-warning"> <i class="fa fa-arrow-up"></i> </button>
+          <select class="inline-select custom-select">
+            <option selected="">List</option>
+            <option value="1">Heading</option>
+            <option value="2">Paragraph</option>
+            <option value="3">Image</option>
+            <option value="3">Link</option>
+          </select>
+          <button class="btn btn-danger"> <i class="fa fa-close"></i> </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Put each item in a separate row"></textarea>
+          </div>
+          <br>
+          <div class="form-group">
+            <select class="custom-select">
+              <option selected="">Unordered List</option>
+              <option value="1">Ordered List</option>
+            </select>
+          </div>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Heading text">
+          <br>
+          <h3>Preview</h3>
+          <ul>
+            <li>Put each</li>
+            <li>item in</li>
+            <li>a separate row</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="container widget">
+      <div class="row">
+        <div class="col-md-8">
+          <h3>Paragraph widget</h3>
+        </div>
+        <div class="col-md-4">
+          <button class="btn btn-warning"> <i class="fa fa-arrow-down"></i> </button>
+          <button class="btn btn-warning"> <i class="fa fa-arrow-up"></i> </button>
+          <select class="inline-select custom-select">
+            <option selected="">Paragraph</option>
+            <option value="3">Heading</option>
+            <option value="1">List</option>
+            <option value="2">Paragraph</option>
+            <option value="3">Image</option>
+          </select>
+          <button class="btn btn-danger"> <i class="fa fa-close"></i> </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Put each item in a separate row"></textarea>
+          </div>
+          <br>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Heading text">
+          <br>
+          <h3>Preview</h3>
+          <p>Lorem Ipsum</p>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="container widget">
+      <div class="row">
+        <div class="col-md-8">
+          <h3>Image widget</h3>
+        </div>
+        <div class="col-md-4">
+          <button class="btn btn-warning"> <i class="fa fa-arrow-down"></i> </button>
+          <button class="btn btn-warning"> <i class="fa fa-arrow-up"></i> </button>
+          <select class="inline-select custom-select">
+            <option selected="">Image</option>
+            <option value="1">List</option>
+            <option value="2">Paragraph</option>
+            <option value="3">Heading</option>
+            <option value="3">Link</option>
+          </select>
+          <button class="btn btn-danger"> <i class="fa fa-close"></i> </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="http://lorempixel.com/300/150">
+          <br>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Widget text">
+          <br>
+          <h3>Preview</h3>
+          <img src="../images/widget-image.jpeg">
+          <br>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="container widget">
+      <div class="row">
+        <div class="col-md-8">
+          <h3>Link widget</h3>
+        </div>
+        <div class="col-md-4">
+          <button class="btn btn-warning"> <i class="fa fa-arrow-down"></i> </button>
+          <button class="btn btn-warning"> <i class="fa fa-arrow-up"></i> </button>
+          <select class="inline-select custom-select">
+            <option selected="">Link</option>
+            <option value="1">Heading</option>
+            <option value="1">List</option>
+            <option value="2">Paragraph</option>
+            <option value="3">Image</option>
+          </select>
+          <button class="btn btn-danger"> <i class="fa fa-close"></i> </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="http://youtube.com/300/150">
+          <br>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Link text">
+          <br>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="http://youtube.com/300/150">
+          <br>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Widget name">
+          <h3>Preview</h3>
+          <a href="#">Link text</a>
+          <br>
+        </div>
+      </div>
+    </div>
+    <br><br>
+    <button type="button" class="btn btn-lg btn-secondary add-widget-plus">+</button>
+    <br><br>
+  </body>
+</html>
