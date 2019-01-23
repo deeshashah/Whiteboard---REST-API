@@ -1,14 +1,18 @@
 (function () {
     var $usernameFld, $passwordFld;
     var $removeBtn, $editBtn, $createBtn;
-    var $firstNameFld, $lastNameFld;
+    var $firstNameFld, $lastNameFld, $roleFld;
     var $userRowTemplate, $tbody;
     var userService = new AdminUserServiceClient();
+    var $i = 0;
     $(main);
 
     function main() {
         $usernameFld = $("#usernameFld");
+        $passwordFld = $("#passwordFld");
         $firstNameFld = $("#firstNameFld");
+        $lastNameFld = $("#lastNameFld");
+        $roleFld = $("#roleFld")
         $userRowTemplate = $(".wbdv-template");
         $tbody = $("tbody");
         
@@ -17,8 +21,32 @@
         userService
             .findAllUsers()
             .then(renderUsers);
+
+        $(".wbdv-create").click(function(){
+            var data = createUser();
+            userService.createUser(data);
+        });
     }
-    function createUser() { }
+
+
+    function createUser() {
+        $usernameFld = $("#usernameFld").val();
+        $passwordFld = $("#passwordFld").val();
+        $firstNameFld = $("#firstNameFld").val();
+        $lastNameFld = $("#lastNameFld").val();
+        $lastNameFld = $("#lastNameFld").val();
+        $roleFld = $("#roleFld option:selected").text();
+        $idFld = $i;
+        var data =  {
+            "id" : $i++,
+            "username": $usernameFld,
+            "firstName": $firstNameFld,
+            "lastName" : $lastNameFld,
+            "role" : $roleFld,
+        }
+        return data;
+    }
+
     function findAllUsers() { }
     function findUserById() { }
     function deleteUser() { }

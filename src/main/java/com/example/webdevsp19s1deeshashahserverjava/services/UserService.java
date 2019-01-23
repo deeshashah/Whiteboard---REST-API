@@ -1,9 +1,10 @@
 package com.example.webdevsp19s1deeshashahserverjava.services;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.RequestBody;
 import com.example.webdevsp19s1deeshashahserverjava.model.User;
 
 import java.util.*;
@@ -34,9 +35,12 @@ public class UserService {
 		}
 		return null;
 	}
-//	public User createUser(User user) {
-//		
-//	}
+
+	@PostMapping("/api/user")
+	public User createUser(@RequestBody User user) {
+		users.add(user);
+		return user;
+	}
 //	public void deleteUser(Integer id) {
 //		
 //	}
