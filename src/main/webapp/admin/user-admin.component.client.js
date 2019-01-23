@@ -31,6 +31,8 @@
             var clone = $userRowTemplate.clone();
             clone.find(".wbdv-username").html(users[u].username);
             clone.find(".wbdv-first-name").html(users[u].firstName);
+            clone.find(".wbdv-last-name").html(users[u].lastName);
+            clone.find(".wbdv-role").html(users[u].role);
             $tbody.append(clone);
         }
     }
