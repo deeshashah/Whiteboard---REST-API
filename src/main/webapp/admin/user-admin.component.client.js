@@ -89,7 +89,7 @@
     }
     function deleteUser(userId) {
         userService.deleteUser(userId);
-        window.location.replace("http://localhost:8080/admin/user-admin.template.client.html");
+        window.location.replace("https://webdev-deesha-shah-server-java.herokuapp.com/admin/user-admin.template.client.html");
 
     }
 
