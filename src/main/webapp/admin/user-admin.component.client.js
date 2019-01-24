@@ -34,7 +34,7 @@
             var firstName = $('#wbdv-edit').closest('tr').children('td.wbdv-first-name').text();
             var lastName = $('#wbdv-edit').closest('tr').children('td.wbdv-last-name').text();
             var role = $('#wbdv-edit').closest('tr').children('td.wbdv-role').text();
-            selectUser(username, password, firstName, lastName);
+            renderUser(username, password, firstName, lastName);
             
 
             $(".wbdv-update").click(function(){
@@ -47,6 +47,12 @@
         $(document).on('click', '#wbdv-remove', function(){
             var userId = $('#wbdv-remove').closest('tr').children('td.wbdv-user-id').text();
             deleteUser(userId);
+        });
+
+        $(".wbdv-search").click(function(){
+            userService
+            .findAllUsers()
+            .then(search);
         });
 
     }
@@ -70,7 +76,9 @@
         return data;
     }
 
-    function findAllUsers() { }
+    function findAllUsers() {
+        userService.findAllUsers();
+    }
     function findUserById() {
         userService.findUserById();
     }
@@ -80,7 +88,7 @@
     }
 
 
-    function selectUser(username, password, firstName, lastName, role) { 
+    function renderUser(username, password, firstName, lastName, role) { 
         $usernameFld.val(username);
         $passwordFld.val(password);
         $firstNameFld.val(firstName);
@@ -106,11 +114,31 @@
         return data;
     }
 
-    function renderUser(user) {  }
+    function search(users) {
+        $usernameFld = $("#usernameFld").val();
+        $firstNameFld = $("#firstNameFld").val();
+        $lastNameFld = $("#lastNameFld").val();
+        $roleFld = $("#roleFld option:selected").text();
+        for(var u=0; u<users.length; u++){
+            if($usernameFld.length!=0 && users[u].username != $usernameFld ||
+                $firstNameFld.length!=0 && users[u].firstName != $firstNameFld ||
+                $lastNameFld.length!=0 && users[u].lastName != $lastNameFld ||
+                $roleFld!= users[u].role){
+                $(".table tr td").each(function() {
+                    var cell = $.trim($(this).text());
+                    if(cell == users[u].id){
+                        $(this).parent().hide();
+                    }
+                })
+            }
+        }
+    }
+
     function renderUsers(users) {
         for(var u=0; u<users.length; u++) {
             console.log(users[u]);
             var clone = $userRowTemplate.clone();
+            clone.find(".wbdv-user-id").html(users[u].id);
             clone.find(".wbdv-username").html(users[u].username);
             clone.find(".wbdv-first-name").html(users[u].firstName);
             clone.find(".wbdv-last-name").html(users[u].lastName);
