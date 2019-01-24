@@ -121,26 +121,47 @@
     }
 
     function search(users) {
+        var filteredUsers = [];
+
         $usernameFld = $("#usernameFld").val();
         $firstNameFld = $("#firstNameFld").val();
         $lastNameFld = $("#lastNameFld").val();
         $roleFld = $("#roleFld option:selected").text();
+        console.log($roleFld);
         for(var u=0; u<users.length; u++){
-            if($usernameFld.length!=0 && users[u].username != $usernameFld ||
-                $firstNameFld.length!=0 && users[u].firstName != $firstNameFld ||
-                $lastNameFld.length!=0 && users[u].lastName != $lastNameFld ||
-                $roleFld!= users[u].role){
-                $(".table tr td").each(function() {
-                    var cell = $.trim($(this).text());
-                    if(cell == users[u].id){
-                        $(this).parent().hide();
-                    }
-                })
+            var flag = true;
+            if($usernameFld && $usernameFld!=users[u].username){
+                flag = false;
+                console.log("usernameFld");
             }
+            if($firstNameFld && $firstNameFld!=users[u].firstName){
+                flag = false;
+                console.log("firstFld");
+            }
+            if($lastNameFld && $lastNameFld!=users[u].lastName){
+                flag = false;
+                console.log("lastFld");
+            }
+            if($roleFld){
+
+                if($roleFld.toLowerCase()!=users[u].role.toLowerCase()){
+                flag = false;
+                console.log("roleFld");
+                }
+            }
+
+            if(flag){
+                filteredUsers.push(users[u]);
+            }
+
         }
+        console.log("Filtered" + filteredUsers);
+        renderUsers(filteredUsers);
     }
 
     function renderUsers(users) {
+        // clean previous users.
+        $('.table tbody').empty(); 
         for(var u=0; u<users.length; u++) {
             var clone = $userRowTemplate.clone();
             clone.find(".wbdv-user-id").html(users[u].id).attr("id","element"+users[u].id);
