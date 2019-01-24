@@ -25,27 +25,32 @@
         $(".wbdv-create").click(function(){
             var data = createUser();
             userService.createUser(data);
+            window.location.replace("http://localhost:8080/admin/user-admin.template.client.html");
         });
 
         $(document).on('click', '#wbdv-edit', function(){
-            var userId = $('#wbdv-edit').closest('tr').children('td.wbdv-user-id').text();
-            var username = $('#wbdv-edit').closest('tr').children('td.wbdv-username').text();
+            var userId = $(this).closest('tr').children('td.wbdv-user-id').text();
+            var username = $(this).closest('tr').children('td.wbdv-username').text();
             var password = "*****"
-            var firstName = $('#wbdv-edit').closest('tr').children('td.wbdv-first-name').text();
-            var lastName = $('#wbdv-edit').closest('tr').children('td.wbdv-last-name').text();
-            var role = $('#wbdv-edit').closest('tr').children('td.wbdv-role').text();
-            renderUser(username, password, firstName, lastName);
+            var firstName = $(this).closest('tr').children('td.wbdv-first-name').text();
+            var lastName = $(this).closest('tr').children('td.wbdv-last-name').text();
+            var role = $(this).closest('tr').children('td.wbdv-role').text();
+            
+            renderUser(userId, username, password, firstName, lastName);
             
 
             $(".wbdv-update").click(function(){
-                var data = updateUser();
-                userService.updateUser(userId, data).then(renderUsers);
+                var data = updateUser(userId);
+                userService.updateUser(userId, data);
+                window.location.replace("http://localhost:8080/admin/user-admin.template.client.html");
+
 
             })
+
         });
 
         $(document).on('click', '#wbdv-remove', function(){
-            var userId = $('#wbdv-remove').closest('tr').children('td.wbdv-user-id').text();
+            var userId = $(this).closest('tr').children('td.wbdv-user-id').text();
             deleteUser(userId);
         });
 
@@ -83,34 +88,35 @@
         userService.findUserById();
     }
     function deleteUser(userId) {
+        userService.deleteUser(userId);
+        window.location.replace("http://localhost:8080/admin/user-admin.template.client.html");
 
-        userService.deleteUser(userId).then(renderUsers);
     }
 
 
-    function renderUser(username, password, firstName, lastName, role) { 
+    function renderUser(id, username, password, firstName, lastName, role) { 
         $usernameFld.val(username);
         $passwordFld.val(password);
         $firstNameFld.val(firstName);
         $lastNameFld.val(lastName);
         $("#roleFld option[value="+role+"]").prop('selected', 'selected');
 
+
     }
 
-    function updateUser() {
+    function updateUser(userId) {
         $usernameFld = $("#usernameFld").val();
         $firstNameFld = $("#firstNameFld").val();
         $lastNameFld = $("#lastNameFld").val();
-        $idFld = $("#idFld").val();
         $roleFld = $('#roleFld').val();
         var data =  {
-            "id" : $idFld,
+            "id" : userId,
             "username": $usernameFld,
             "firstName": $firstNameFld,
             "lastName" : $lastNameFld,
             "role": $roleFld,
         }
-        console.log(data);
+        console.log("DATA: "+JSON.stringify(data));
         return data;
     }
 
@@ -136,9 +142,8 @@
 
     function renderUsers(users) {
         for(var u=0; u<users.length; u++) {
-            console.log(users[u]);
             var clone = $userRowTemplate.clone();
-            clone.find(".wbdv-user-id").html(users[u].id);
+            clone.find(".wbdv-user-id").html(users[u].id).attr("id","element"+users[u].id);
             clone.find(".wbdv-username").html(users[u].username);
             clone.find(".wbdv-first-name").html(users[u].firstName);
             clone.find(".wbdv-last-name").html(users[u].lastName);

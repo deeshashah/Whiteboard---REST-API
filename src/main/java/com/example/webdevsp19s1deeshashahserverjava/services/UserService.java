@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.webdevsp19s1deeshashahserverjava.model.User;
 
 import java.util.*;
@@ -54,13 +55,16 @@ public class UserService {
 	}
 
 	@PutMapping("api/user/{userId}")
-	public User updateUser(
+	public @ResponseBody User updateUser(
 		@PathVariable("userId") Integer id, @RequestBody User user) {
-		for(User usr: users) {
-			if(id == usr.getId().intValue())
-				usr = user;
-				return usr;
+
+		for(int i=0;i<users.size();i++){
+			if(users.get(i).getId().intValue()==id){
+				users.set(i, user);
+				return user;
+			}
 		}
+
 		return null;
 	}
 }
