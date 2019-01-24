@@ -4,7 +4,7 @@ function AdminUserServiceClient() {
     this.findUserById = findUserById;
     this.deleteUser = deleteUser;
     this.updateUser = updateUser;
-    this.url = 'http://localhost:8080/api/user';
+    this.url = 'https://webdev-deesha-shah-server-java.herokuapp.com/api/user';
     var self = this;
     function createUser(user, callback) {
         const promise = new Promise((resolve, reject) => {
@@ -19,7 +19,7 @@ function AdminUserServiceClient() {
           }
         });
 
-        xhr.open("POST", "http://localhost:8080/api/user");
+        xhr.open("POST", "https://webdev-deesha-shah-server-java.herokuapp.com/api/user");
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.setRequestHeader("cache-control", "no-cache");
         xhr.setRequestHeader("Postman-Token", "695905c2-3b79-4776-a861-e343f39483a9");
@@ -36,7 +36,7 @@ function AdminUserServiceClient() {
             });
     }
     function findUserById(userId, callback) {
-        return fetch('http://localhost:8080/api/user/'+userId)
+        return fetch('https://webdev-deesha-shah-server-java.herokuapp.com/api/user/'+userId)
               .then(function(response){
                   return response.json();
               });
@@ -54,7 +54,7 @@ function AdminUserServiceClient() {
           }
         });
 
-        xhr.open("PUT", "http://localhost:8080/api/user/"+userId);
+        xhr.open("PUT", "https://webdev-deesha-shah-server-java.herokuapp.com/api/user/"+userId);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.setRequestHeader("cache-control", "no-cache");
         xhr.setRequestHeader("Postman-Token", "018a6d42-90c5-4208-9338-6756d69a7718");
@@ -81,7 +81,7 @@ function AdminUserServiceClient() {
           }
         });
 
-        xhr.open("DELETE", "http://localhost:8080/api/user/"+userId);
+        xhr.open("DELETE", "https://webdev-deesha-shah-server-java.herokuapp.com/api/user/"+userId);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.setRequestHeader("cache-control", "no-cache");
         xhr.setRequestHeader("Postman-Token", "fce7c71c-a6c8-43cb-a82c-71c7ef00f2e4");
