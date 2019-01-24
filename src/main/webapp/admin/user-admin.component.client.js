@@ -74,7 +74,22 @@
         $("#roleFld option[value="+role+"]").prop('selected', 'selected');
 
     }
-    function updateUser() { }
+    function updateUser() {
+        $usernameFld = $("#usernameFld").val();
+        $firstNameFld = $("#firstNameFld").val();
+        $lastNameFld = $("#lastNameFld").val();
+        $idFld = $("#idFld").val();
+        $roleFld = $('#roleFld').val();
+        var data =  {
+            "id" : $idFld,
+            "username": $usernameFld,
+            "firstName": $firstNameFld,
+            "lastName" : $lastNameFld,
+            "role": $roleFld,
+        }
+        console.log(data);
+        return data;
+    }
     function renderUser(user) {  }
     function renderUsers(users) {
         for(var u=0; u<users.length; u++) {
