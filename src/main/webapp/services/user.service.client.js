@@ -52,7 +52,7 @@ function AdminUserServiceClient() {
         xhr.open("PUT", "http://localhost:8080/api/user/"+userId);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.setRequestHeader("cache-control", "no-cache");
-        xhr.setRequestHeader("Postman-Token", "7ca1de74-f86f-4d5e-813d-e2b7611079af");
+        xhr.setRequestHeader("Postman-Token", "018a6d42-90c5-4208-9338-6756d69a7718");
 
         xhr.send(data);
 
@@ -61,5 +61,28 @@ function AdminUserServiceClient() {
 
       
     }
-    function deleteUser(userId, callback) { }
+    
+    function deleteUser(userId, callback) {
+      const promise = new Promise((resolve, reject) => {
+
+        var data = JSON.stringify(false);
+
+        var xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+
+        xhr.addEventListener("readystatechange", function () {
+          if (this.readyState === 4) {
+            console.log(this.responseText);
+          }
+        });
+
+        xhr.open("DELETE", "http://localhost:8080/api/user/"+userId);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.setRequestHeader("cache-control", "no-cache");
+        xhr.setRequestHeader("Postman-Token", "fce7c71c-a6c8-43cb-a82c-71c7ef00f2e4");
+
+        xhr.send(data);
+        });
+        return promise;
+    }
 }

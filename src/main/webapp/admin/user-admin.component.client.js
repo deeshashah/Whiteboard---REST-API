@@ -39,9 +39,16 @@
 
             $(".wbdv-update").click(function(){
                 var data = updateUser();
-                userService.updateUser(userId, data);
+                userService.updateUser(userId, data).then(renderUsers);
+
             })
         });
+
+        $(document).on('click', '#wbdv-remove', function(){
+            var userId = $('#wbdv-remove').closest('tr').children('td.wbdv-user-id').text();
+            deleteUser(userId);
+        });
+
     }
 
 
@@ -65,7 +72,12 @@
 
     function findAllUsers() { }
     function findUserById() { }
-    function deleteUser() { }
+    function deleteUser(userId) {
+
+        userService.deleteUser(userId).then(renderUsers);
+    }
+
+
     function selectUser(username, password, firstName, lastName, role) { 
         $usernameFld.val(username);
         $passwordFld.val(password);
@@ -74,6 +86,7 @@
         $("#roleFld option[value="+role+"]").prop('selected', 'selected');
 
     }
+
     function updateUser() {
         $usernameFld = $("#usernameFld").val();
         $firstNameFld = $("#firstNameFld").val();
@@ -90,6 +103,7 @@
         console.log(data);
         return data;
     }
+
     function renderUser(user) {  }
     function renderUsers(users) {
         for(var u=0; u<users.length; u++) {

@@ -3,6 +3,7 @@ package com.example.webdevsp19s1deeshashahserverjava.services;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -42,9 +43,16 @@ public class UserService {
 		users.add(user);
 		return user;
 	}
-//	public void deleteUser(Integer id) {
-//		
-//	}
+
+	@DeleteMapping("/api/user/{userId}")
+	public void deleteUser(
+		@PathVariable("userId") Integer id) {
+		for(User usr: users){
+			if(id == usr.getId().intValue())
+				users.remove(usr);
+		}
+	}
+
 	@PutMapping("api/user/{userId}")
 	public User updateUser(
 		@PathVariable("userId") Integer id, @RequestBody User user) {
