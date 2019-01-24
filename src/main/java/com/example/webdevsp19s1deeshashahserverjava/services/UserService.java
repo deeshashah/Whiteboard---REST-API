@@ -2,6 +2,7 @@ package com.example.webdevsp19s1deeshashahserverjava.services;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -44,7 +45,14 @@ public class UserService {
 //	public void deleteUser(Integer id) {
 //		
 //	}
-//	public User updateUser(Integer id, User user) {
-//		
-//	}
+	@PutMapping("api/user/{userId}")
+	public User updateUser(
+		@PathVariable("userId") Integer id, @RequestBody User user) {
+		for(User usr: users) {
+			if(id == usr.getId().intValue())
+				usr = user;
+				return usr;
+		}
+		return null;
+	}
 }

@@ -36,6 +36,30 @@ function AdminUserServiceClient() {
             });
     }
     function findUserById(userId, callback) { }
-    function updateUser(userId, user, callback) { }
+    function updateUser(userId, user, callback) {
+      const promise = new Promise((resolve, reject) => {
+        var data = JSON.stringify(user);
+
+        var xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+
+        xhr.addEventListener("readystatechange", function () {
+          if (this.readyState === 4) {
+            console.log(this.responseText);
+          }
+        });
+
+        xhr.open("PUT", "http://localhost:8080/api/user/"+userId);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.setRequestHeader("cache-control", "no-cache");
+        xhr.setRequestHeader("Postman-Token", "7ca1de74-f86f-4d5e-813d-e2b7611079af");
+
+        xhr.send(data);
+
+      });
+      return promise;
+
+      
+    }
     function deleteUser(userId, callback) { }
 }

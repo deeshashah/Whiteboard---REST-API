@@ -26,6 +26,22 @@
             var data = createUser();
             userService.createUser(data);
         });
+
+        $(document).on('click', '#wbdv-edit', function(){
+            var userId = $('#wbdv-edit').closest('tr').children('td.wbdv-user-id').text();
+            var username = $('#wbdv-edit').closest('tr').children('td.wbdv-username').text();
+            var password = "*****"
+            var firstName = $('#wbdv-edit').closest('tr').children('td.wbdv-first-name').text();
+            var lastName = $('#wbdv-edit').closest('tr').children('td.wbdv-last-name').text();
+            var role = $('#wbdv-edit').closest('tr').children('td.wbdv-role').text();
+            selectUser(username, password, firstName, lastName);
+            
+
+            $(".wbdv-update").click(function(){
+                var data = updateUser();
+                userService.updateUser(userId, data);
+            })
+        });
     }
 
 
@@ -50,7 +66,14 @@
     function findAllUsers() { }
     function findUserById() { }
     function deleteUser() { }
-    function selectUser() { }
+    function selectUser(username, password, firstName, lastName, role) { 
+        $usernameFld.val(username);
+        $passwordFld.val(password);
+        $firstNameFld.val(firstName);
+        $lastNameFld.val(lastName);
+        $("#roleFld option[value="+role+"]").prop('selected', 'selected');
+
+    }
     function updateUser() { }
     function renderUser(user) {  }
     function renderUsers(users) {
