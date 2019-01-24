@@ -71,7 +71,9 @@
     }
 
     function findAllUsers() { }
-    function findUserById() { }
+    function findUserById() {
+        userService.findUserById();
+    }
     function deleteUser(userId) {
 
         userService.deleteUser(userId).then(renderUsers);

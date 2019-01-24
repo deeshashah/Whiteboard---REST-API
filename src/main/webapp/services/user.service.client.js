@@ -35,7 +35,12 @@ function AdminUserServiceClient() {
                 return response.json();
             });
     }
-    function findUserById(userId, callback) { }
+    function findUserById(userId, callback) {
+        return fetch('http://localhost:8080/api/user/'+userId)
+              .then(function(response){
+                  return response.json();
+              });
+    }
     function updateUser(userId, user, callback) {
       const promise = new Promise((resolve, reject) => {
         var data = JSON.stringify(user);
