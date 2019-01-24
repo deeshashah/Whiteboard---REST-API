@@ -4,7 +4,7 @@ function AdminUserServiceClient() {
     this.findUserById = findUserById;
     this.deleteUser = deleteUser;
     this.updateUser = updateUser;
-    this.url = 'https://webdev-deesha-shah-server-java.herokuapp.com/';
+    this.url = 'https://webdev-deesha-shah-server-java.herokuapp.com/api/user/';
     var self = this;
     function createUser(user, callback) {
         const promise = new Promise((resolve, reject) => {

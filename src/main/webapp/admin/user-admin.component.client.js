@@ -25,7 +25,7 @@
         $(".wbdv-create").click(function(){
             var data = createUser();
             userService.createUser(data);
-            window.location.replace("http://localhost:8080/admin/user-admin.template.client.html");
+            window.location.replace("https://webdev-deesha-shah-server-java.herokuapp.com/admin/user-admin.template.client.html");
         });
 
         $(document).on('click', '#wbdv-edit', function(){
@@ -42,7 +42,7 @@
             $(".wbdv-update").click(function(){
                 var data = updateUser(userId);
                 userService.updateUser(userId, data);
-                window.location.replace("http://localhost:8080/admin/user-admin.template.client.html");
+                window.location.replace("https://webdev-deesha-shah-server-java.herokuapp.com/admin/user-admin.template.client.html");
 
 
             })
