@@ -1,11 +1,11 @@
 package com.example.webdevsp19s1deeshashahserverjava.model;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Module {
+public class Lesson {
 	private Integer id;
 	private String title;
-	List<Lesson> lessons = new ArrayList<Lesson>();
 	
 	public Integer getId() {
 		return id;
@@ -23,21 +23,16 @@ public class Module {
 		this.title = title;
 	}
 
-	public List<Lesson> getLessons() {
-		return lessons;
-	}
-
-	public void setLessons(List<Lesson> lessons) {
-		this.lessons = lessons;
-	}
-
-	public Module() {
+	public Lesson() {
 		
 	}
 	
-	public Module(Integer id, String title) {
+	public Lesson(Integer id, String title) {
+		
 		super();
 		this.id = id;
 		this.title = title;
 	}
+	
+	
 }
