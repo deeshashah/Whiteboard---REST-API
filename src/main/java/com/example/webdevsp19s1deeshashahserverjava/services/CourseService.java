@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.webdevsp19s1deeshashahserverjava.model.Course;
+import com.example.webdevsp19s1deeshashahserverjava.model.Lesson;
 import com.example.webdevsp19s1deeshashahserverjava.model.Module;
 
 
@@ -20,13 +21,33 @@ public class CourseService {
 	Course cs5610 = new Course(123, "CS5610");
 	Course cs4500 = new Course(234, "CS4500");
 	
-	
 	public List<Module> cs4500modules = new ArrayList<Module>();
 	Module cs4500W1 = new Module(123, "Week1");
 	Module cs4500W2 = new Module(234, "Week2");
-	//Course[] courses = {cs5610, cs4500};
+	
+	List<Lesson> cs4500W1Lessons = new ArrayList<Lesson>();
+	Lesson w1Dom = new Lesson(301, "HTML");
+	Lesson w1Tags = new Lesson(302, "CSS");
+	Lesson w1Attributes = new Lesson(303, "Bootstrap");
+	
+	List<Lesson> cs4500W2Lessons = new ArrayList<Lesson>();
+	Lesson w2Javascript = new Lesson(304, "Javascript");
+	Lesson w2Jquery = new Lesson(305, "Jquery");
+	
+	
 	List<Course> courses = new ArrayList<Course>();
 	{
+		// setting the lessons for module w1 in course cs4500
+		cs4500W1Lessons.add(w1Dom);
+		cs4500W1Lessons.add(w1Tags);
+		cs4500W1Lessons.add(w1Attributes);
+		cs4500W1.setLessons(cs4500W1Lessons);
+
+		// setting the lessons for module w2 in course cs4500
+		cs4500W2Lessons.add(w2Javascript);
+		cs4500W2Lessons.add(w2Jquery);
+		cs4500W2.setLessons(cs4500W2Lessons);
+		
 		cs4500modules.add(cs4500W1);
 		cs4500modules.add(cs4500W2);
 		
@@ -34,7 +55,6 @@ public class CourseService {
 		courses.add(cs5610);
 		courses.add(cs4500);
 	}
-	
 	
 	@PostMapping("/api/courses")
 	public Course createCourse(@RequestBody Course course) {
