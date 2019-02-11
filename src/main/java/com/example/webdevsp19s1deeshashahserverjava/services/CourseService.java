@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.webdevsp19s1deeshashahserverjava.model.Course;
 import com.example.webdevsp19s1deeshashahserverjava.model.Lesson;
 import com.example.webdevsp19s1deeshashahserverjava.model.Module;
+import com.example.webdevsp19s1deeshashahserverjava.model.Topic;
 
 
 @RestController
@@ -26,21 +27,65 @@ public class CourseService {
 	Module cs4500W2 = new Module(234, "Week2");
 	
 	List<Lesson> cs4500W1Lessons = new ArrayList<Lesson>();
-	Lesson w1Dom = new Lesson(301, "HTML");
-	Lesson w1Tags = new Lesson(302, "CSS");
-	Lesson w1Attributes = new Lesson(303, "Bootstrap");
+	Lesson w1Html = new Lesson(301, "HTML");
+	Lesson w1Css = new Lesson(302, "CSS");
+	Lesson w1Bootstrap = new Lesson(303, "Bootstrap");
 	
 	List<Lesson> cs4500W2Lessons = new ArrayList<Lesson>();
 	Lesson w2Javascript = new Lesson(304, "Javascript");
 	Lesson w2Jquery = new Lesson(305, "Jquery");
 	
+	List<Topic> htmlTopics = new ArrayList<Topic>();
+	Topic topicDom = new Topic(601, "The DOM");
+	Topic topicTags = new Topic(602, "Tags");
+	
+	List<Topic> cssTopics = new ArrayList<Topic>();
+	Topic topicBorders = new Topic(603, "Borders");
+	Topic topicColors = new Topic(604, "Colors");
+	
+	List<Topic> bootstrapTopics = new ArrayList<Topic>();
+	Topic topicGrids = new Topic(605, "Grids");
+	Topic topicCarousels = new Topic(606, "Carousels");
+	
+	List<Topic> javascriptTopics = new ArrayList<Topic>();
+	Topic topicVariables = new Topic(607, "Variables");
+	Topic topicCallbacks = new Topic(608, "Callbacks");
+	
+	List<Topic> jqueryTopics = new ArrayList<Topic>();
+	Topic topicEvents = new Topic(609, "Events");
 	
 	List<Course> courses = new ArrayList<Course>();
 	{
+		//setting lessons for html
+		htmlTopics.add(topicDom);
+		htmlTopics.add(topicTags);
+		w1Html.setTopics(htmlTopics);
+		
+		//setting lessons for css
+		cssTopics.add(topicBorders);
+		cssTopics.add(topicColors);
+		w1Css.setTopics(cssTopics);
+		
+		//setting lessons for bootstrap
+		bootstrapTopics.add(topicGrids);
+		bootstrapTopics.add(topicCarousels);
+		w1Bootstrap.setTopics(bootstrapTopics);
+		
+		//setting lessons for js
+		javascriptTopics.add(topicVariables);
+		javascriptTopics.add(topicCallbacks);
+		w2Javascript.setTopics(javascriptTopics);
+		
+		
+		//setting lessons for jquery
+		jqueryTopics.add(topicEvents);
+		w2Jquery.setTopics(jqueryTopics);
+		
+		
 		// setting the lessons for module w1 in course cs4500
-		cs4500W1Lessons.add(w1Dom);
-		cs4500W1Lessons.add(w1Tags);
-		cs4500W1Lessons.add(w1Attributes);
+		cs4500W1Lessons.add(w1Html);
+		cs4500W1Lessons.add(w1Css);
+		cs4500W1Lessons.add(w1Bootstrap);
 		cs4500W1.setLessons(cs4500W1Lessons);
 
 		// setting the lessons for module w2 in course cs4500
