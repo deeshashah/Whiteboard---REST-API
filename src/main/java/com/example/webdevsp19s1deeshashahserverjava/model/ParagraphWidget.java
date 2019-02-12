@@ -11,4 +11,13 @@ public class ParagraphWidget extends Widget{
 		this.text = text;
 	}
 	
+	public ParagraphWidget() {
+		
+	}
+	
+	public ParagraphWidget(Integer id, String name, String type, String text) {
+		super(id, name, type);
+		this.text = text;
+	}
+	
 }

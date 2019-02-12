@@ -12,9 +12,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.webdevsp19s1deeshashahserverjava.model.Course;
+import com.example.webdevsp19s1deeshashahserverjava.model.HeadingWidget;
+import com.example.webdevsp19s1deeshashahserverjava.model.ImageWidget;
 import com.example.webdevsp19s1deeshashahserverjava.model.Lesson;
+import com.example.webdevsp19s1deeshashahserverjava.model.LinkWidget;
 import com.example.webdevsp19s1deeshashahserverjava.model.Module;
+import com.example.webdevsp19s1deeshashahserverjava.model.ParagraphWidget;
 import com.example.webdevsp19s1deeshashahserverjava.model.Topic;
+import com.example.webdevsp19s1deeshashahserverjava.model.Widget;
 
 
 @RestController
@@ -39,9 +44,57 @@ public class CourseService {
 	Topic topicDom = new Topic(601, "The DOM");
 	Topic topicTags = new Topic(602, "Tags");
 	
+	List<Widget> domWidgets = new ArrayList<Widget>();
+	Widget domHeadingWidget = new HeadingWidget(801, "Heading", "HEADING", "The DOM", 1);
+	Widget domParagraphWidget = new ParagraphWidget(802, "Paragraph", "PARAGRAPH", "This topic introduces the DOM");
+	Widget domImageWidget = new ImageWidget(803, "Image", "IMAGE", "https://picsum.photos/200");
+	{
+		domWidgets.add(domHeadingWidget);
+		domWidgets.add(domParagraphWidget);
+		domWidgets.add(domImageWidget);
+		topicDom.setWidgets(domWidgets);
+	}
+	
+	
+	List<Widget> tagsWidgets = new ArrayList<Widget>();
+	Widget tagsHeadingWidget = new HeadingWidget(803, "Heading", "HEADING", "Tags", 1);
+	Widget tagsParagraphWidget = new ParagraphWidget(804, "Paragraph", "PARAGRAPH", "This topic introduces the tags in HTMl");
+	{
+		tagsWidgets.add(tagsHeadingWidget);
+		tagsWidgets.add(tagsParagraphWidget);
+		
+		topicTags.setWidgets(tagsWidgets);
+	}
+	
 	List<Topic> cssTopics = new ArrayList<Topic>();
 	Topic topicBorders = new Topic(603, "Borders");
 	Topic topicColors = new Topic(604, "Colors");
+	
+	List<Widget> borderWidgets = new ArrayList<Widget>();
+	Widget borderHeadingWidget = new HeadingWidget(805, "Heading", "HEADING", "Borders", 1);
+	Widget borderParagraphWidget = new ParagraphWidget(806, "Paragraph", "PARAGRAPH", "This topic introduces the borders in css");
+	Widget borderImageWidget = new ImageWidget(807, "Image", "IMAGE", "https://picsum.photos/200");
+	{
+		borderWidgets.add(borderHeadingWidget);
+		borderWidgets.add(borderParagraphWidget);
+		borderWidgets.add(borderImageWidget);
+		
+		topicBorders.setWidgets(borderWidgets);
+		
+	}
+	
+	List<Widget> colorWidgets = new ArrayList<Widget>();
+	Widget colorHeadingWidget = new HeadingWidget(809, "Heading", "HEADING", "Colors", 1);
+	Widget colorParagraphWidget = new ParagraphWidget(810, "Paragraph", "PARAGRAPH", "This topic introduces colors in CSS");
+	Widget colorLinkWidget = new LinkWidget(811, "Link", "LINK", "flatcolors.io", "www.flatcolors.io");
+	
+	{
+		colorWidgets.add(colorHeadingWidget);
+		colorWidgets.add(colorParagraphWidget);
+		colorWidgets.add(colorLinkWidget);
+		
+		topicColors.setWidgets(colorWidgets);
+	}
 	
 	List<Topic> bootstrapTopics = new ArrayList<Topic>();
 	Topic topicGrids = new Topic(605, "Grids");

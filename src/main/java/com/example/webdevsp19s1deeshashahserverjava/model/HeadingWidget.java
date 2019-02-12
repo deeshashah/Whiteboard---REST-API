@@ -17,4 +17,15 @@ public class HeadingWidget extends Widget {
 		this.size = size;
 	}
 	
+	public HeadingWidget() {
+		
+	}
+	
+	public HeadingWidget(Integer id, String name, String type, String text, Integer size) {
+		super(id, name, type);
+		this.text = text;
+		this.size = size;
+	}
+	
+	
 }

@@ -1,8 +1,11 @@
 package com.example.webdevsp19s1deeshashahserverjava.model;
 
+import java.util.*;
+
 public class Topic {
 	private Integer id;
 	private String title;
+	private List<Widget> widgets = new ArrayList<Widget>(); 
 	
 	public Integer getId() {
 		return id;
@@ -18,6 +21,14 @@ public class Topic {
 	
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	
+	public List<Widget> getWidgets() {
+		return widgets;
+	}
+
+	public void setWidgets(List<Widget> widgets) {
+		this.widgets = widgets;
 	}
 
 	public Topic() {

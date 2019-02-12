@@ -24,6 +24,16 @@ public class Widget {
 		this.type = type;
 	}
 	
+	public Widget() {
+		
+	}
+	
+	public Widget(Integer id, String name, String type) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.type = type;
+	}
 	
 	
 }

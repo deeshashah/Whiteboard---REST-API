@@ -16,4 +16,14 @@ public class LinkWidget extends Widget{
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	
+	public LinkWidget() {
+		
+	}
+	
+	public LinkWidget(Integer id, String name, String type, String href, String title) {
+		super(id, name, type);
+		this.href = href;
+		this.title = title;
+	}
 }
