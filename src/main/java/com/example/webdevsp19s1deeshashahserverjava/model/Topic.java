@@ -1,12 +1,8 @@
 package com.example.webdevsp19s1deeshashahserverjava.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class Lesson {
+public class Topic {
 	private Integer id;
 	private String title;
-	List<Topic> topics = new ArrayList<Topic>();
 	
 	public Integer getId() {
 		return id;
@@ -24,24 +20,14 @@ public class Lesson {
 		this.title = title;
 	}
 
-	public List<Topic> getTopics() {
-		return topics;
-	}
-
-	public void setTopics(List<Topic> topics) {
-		this.topics = topics;
-	}
-
-	public Lesson() {
+	public Topic() {
 		
 	}
 	
-	public Lesson(Integer id, String title) {
+	public Topic(Integer id, String title) {
 		
 		super();
 		this.id = id;
 		this.title = title;
 	}
-	
-	
 }
