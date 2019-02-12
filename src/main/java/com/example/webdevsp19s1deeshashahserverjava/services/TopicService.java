@@ -32,4 +32,73 @@ public class TopicService {
 	public List<Topic> findAllTopics(@PathVariable("lid") Integer id){
 		return lessonService.findLessonById(id).getTopics();
 	}
+	
+	@GetMapping("/api/topic/{tid}")
+	public Topic findTopicById(@PathVariable("tid") Integer id) {
+		List<Course> courses = courseService.findAllCourses();
+		for(Course course: courses) {
+			List<Module> modules = course.getModules();
+			for(Module module: modules) {
+				List<Lesson> lessons = module.getLessons();
+				for(Lesson lesson: lessons) {
+					List<Topic> topics = lesson.getTopics();
+					for(Topic topic: topics) {
+						if(topic.getId().equals(id)) {
+							return topic;
+						}
+					}
+				}
+			}
+		}
+		return null;
+	}
+	
+	@PostMapping("/api/lesson/{lid}/topic")
+	public Topic createTopic(@PathVariable("lid") Integer id, @RequestBody Topic topic) {
+		Lesson lesson = lessonService.findLessonById(id);
+		List<Topic> topics = lesson.getTopics();
+		topics.add(topic);
+		return topic;
+	}
+	
+	@PutMapping("/api/topic/{tid}")
+	public Topic updateTopic(@PathVariable("tid") Integer id, @RequestBody Topic newTopic) {
+		List<Course> courses = courseService.findAllCourses();
+		for(Course course: courses) {
+			List<Module> modules = course.getModules();
+			for(Module module: modules) {
+				List<Lesson> lessons = module.getLessons();
+				for(Lesson lesson: lessons) {
+					List<Topic> topics = lesson.getTopics();
+					for(Topic topic: topics) {
+						if(topic.getId().equals(id)) {
+							topic.setTitle(newTopic.getTitle());
+							return topic;
+						}
+					}
+				}
+			}
+		}
+		return null;
+	}
+	
+	@DeleteMapping("/api/topic/{tid}")
+	public void deleteTopic(@PathVariable("tid") Integer id) {
+		List<Course> courses = courseService.findAllCourses();
+		for(Course course: courses) {
+			List<Module> modules = course.getModules();
+			for(Module module: modules) {
+				List<Lesson> lessons = module.getLessons();
+				for(Lesson lesson: lessons) {
+					List<Topic> topics = lesson.getTopics();
+					for(Topic topic: topics) {
+						if(topic.getId().equals(id)) {
+							topics.remove(topic);
+							break;
+						}
+					}
+				}
+			}
+		}
+	}
 }
