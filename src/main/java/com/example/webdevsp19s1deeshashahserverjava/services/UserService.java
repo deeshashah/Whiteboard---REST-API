@@ -25,8 +25,8 @@ import java.util.*;
 
 import javax.servlet.http.HttpSession;
 
-@RestController
 @CrossOrigin(allowCredentials = "true")
+@RestController
 public class UserService {
 	int userId = 0;
 	User alice = new User(123, "alice","rabbit", "Alice", "Wonderland", "FACULTY", "87645321934", "alice@gmail.com");

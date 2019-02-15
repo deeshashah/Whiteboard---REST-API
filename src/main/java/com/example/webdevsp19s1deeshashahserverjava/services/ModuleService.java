@@ -20,8 +20,8 @@ import java.util.*;
 
 import javax.servlet.http.HttpSession;
 
-@RestController
 @CrossOrigin(allowCredentials = "true")
+@RestController
 public class ModuleService {
 	int moduleId = 2000;
 	@Autowired

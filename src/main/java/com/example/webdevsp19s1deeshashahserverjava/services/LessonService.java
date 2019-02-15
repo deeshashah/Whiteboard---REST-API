@@ -20,8 +20,8 @@ import java.util.*;
 
 import javax.servlet.http.HttpSession;
 
-@RestController
 @CrossOrigin(allowCredentials = "true")
+@RestController
 public class LessonService {
 	int lessonId = 4000;
 	

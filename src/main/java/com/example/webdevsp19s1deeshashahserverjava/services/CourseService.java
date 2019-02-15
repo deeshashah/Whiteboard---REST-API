@@ -27,8 +27,8 @@ import com.example.webdevsp19s1deeshashahserverjava.model.Widget;
 import com.example.webdevsp19s1deeshashahserverjava.model.User;
 
 
-@RestController
 @CrossOrigin(allowCredentials = "true")
+@RestController
 public class CourseService {
 	int courseId = 1000;
 	List<Course> courses = new ArrayList<Course>();
