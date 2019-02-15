@@ -3,7 +3,9 @@ package com.example.webdevsp19s1deeshashahserverjava.services;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.webdevsp19s1deeshashahserverjava.model.Course;
+import com.example.webdevsp19s1deeshashahserverjava.model.Lesson;
 import com.example.webdevsp19s1deeshashahserverjava.model.Module;
+import com.example.webdevsp19s1deeshashahserverjava.model.Topic;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -51,6 +53,15 @@ public class ModuleService {
 		module.setId(moduleId++);
 		if(module.getTitle().equals("")){
 			module.setTitle("New Module");
+			List<Lesson> lessons = new ArrayList<Lesson>();
+			Lesson l = new Lesson(777, "New Lesson");
+			
+			List<Topic> topics = new ArrayList<Topic>();
+			Topic t = new Topic(888, "New Topic");
+			topics.add(t);
+			l.setTopics(topics);
+			lessons.add(l);
+			module.setLessons(lessons);
 		}
 		List<Module> modules = course.getModules();
 		modules.add(module);

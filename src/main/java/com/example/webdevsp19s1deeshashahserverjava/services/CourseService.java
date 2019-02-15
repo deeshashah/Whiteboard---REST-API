@@ -174,6 +174,20 @@ public class CourseService {
 		
 		if(course.getTitle().equals("")) {
 			course.setTitle("New Course");
+			List<Module> modules = new ArrayList<Module>();
+			Module m = new Module(345, "New Module");
+			List<Lesson> lessons = new ArrayList<Lesson>();
+			Lesson l = new Lesson(768, "New Lesson");
+			
+			List<Topic> topics = new ArrayList<Topic>();
+			Topic t = new Topic(999, "New Topic");
+			topics.add(t);
+			l.setTopics(topics);
+			lessons.add(l);
+			m.setLessons(lessons);
+			modules.add(m);
+			course.setModules(modules);
+			
 		}
 		courses.add(course);
 		curruser.setAuthoredCourses(courses);

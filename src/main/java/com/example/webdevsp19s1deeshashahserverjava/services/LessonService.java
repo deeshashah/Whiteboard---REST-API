@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.webdevsp19s1deeshashahserverjava.model.Course;
 import com.example.webdevsp19s1deeshashahserverjava.model.Lesson;
 import com.example.webdevsp19s1deeshashahserverjava.model.Module;
+import com.example.webdevsp19s1deeshashahserverjava.model.Topic;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -58,6 +59,10 @@ public class LessonService {
 		lesson.setId(lessonId++);
 		if(lesson.getTitle().equals("")){
 			lesson.setTitle("New Lesson");
+			List<Topic> topics = new ArrayList<Topic>();
+			Topic t = new Topic(838, "New Topic");
+			topics.add(t);
+			lesson.setTopics(topics);
 		}
 		List<Lesson> lessons = module.getLessons();
 		lessons.add(lesson);
