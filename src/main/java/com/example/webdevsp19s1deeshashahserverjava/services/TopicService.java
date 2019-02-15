@@ -8,6 +8,7 @@ import com.example.webdevsp19s1deeshashahserverjava.model.Module;
 import com.example.webdevsp19s1deeshashahserverjava.model.Topic;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,8 +18,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.*;
 
+import javax.servlet.http.HttpSession;
+
 @RestController
+@CrossOrigin(origins = "http://localhost:3000",allowCredentials = "true", allowedHeaders = "*")
 public class TopicService {
+	int topicId = 9000;
+	
 	@Autowired
 	CourseService courseService = new CourseService();
 	
@@ -29,13 +35,13 @@ public class TopicService {
 	LessonService lessonService = new LessonService();
 	
 	@GetMapping("/api/lesson/{lid}/topic")
-	public List<Topic> findAllTopics(@PathVariable("lid") Integer id){
-		return lessonService.findLessonById(id).getTopics();
+	public List<Topic> findAllTopics(@PathVariable("lid") Integer id, HttpSession session){
+		return lessonService.findLessonById(id, session).getTopics();
 	}
 	
 	@GetMapping("/api/topic/{tid}")
-	public Topic findTopicById(@PathVariable("tid") Integer id) {
-		List<Course> courses = courseService.findAllCourses();
+	public Topic findTopicById(@PathVariable("tid") Integer id, HttpSession session) {
+		List<Course> courses = courseService.findAllCourses(session);
 		for(Course course: courses) {
 			List<Module> modules = course.getModules();
 			for(Module module: modules) {
@@ -54,16 +60,20 @@ public class TopicService {
 	}
 	
 	@PostMapping("/api/lesson/{lid}/topic")
-	public Topic createTopic(@PathVariable("lid") Integer id, @RequestBody Topic topic) {
-		Lesson lesson = lessonService.findLessonById(id);
+	public Topic createTopic(@PathVariable("lid") Integer id, @RequestBody Topic topic, HttpSession session) {
+		topic.setId(topicId++);
+		Lesson lesson = lessonService.findLessonById(id, session);
+		if(topic.getTitle().equals("")){
+			topic.setTitle("New Topic");
+		}
 		List<Topic> topics = lesson.getTopics();
 		topics.add(topic);
 		return topic;
 	}
 	
 	@PutMapping("/api/topic/{tid}")
-	public Topic updateTopic(@PathVariable("tid") Integer id, @RequestBody Topic newTopic) {
-		List<Course> courses = courseService.findAllCourses();
+	public Topic updateTopic(@PathVariable("tid") Integer id, @RequestBody Topic newTopic, HttpSession session) {
+		List<Course> courses = courseService.findAllCourses(session);
 		for(Course course: courses) {
 			List<Module> modules = course.getModules();
 			for(Module module: modules) {
@@ -83,8 +93,8 @@ public class TopicService {
 	}
 	
 	@DeleteMapping("/api/topic/{tid}")
-	public void deleteTopic(@PathVariable("tid") Integer id) {
-		List<Course> courses = courseService.findAllCourses();
+	public void deleteTopic(@PathVariable("tid") Integer id, HttpSession session) {
+		List<Course> courses = courseService.findAllCourses(session);
 		for(Course course: courses) {
 			List<Module> modules = course.getModules();
 			for(Module module: modules) {

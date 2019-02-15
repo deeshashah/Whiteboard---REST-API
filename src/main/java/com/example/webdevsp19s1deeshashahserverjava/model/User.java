@@ -1,5 +1,5 @@
 package com.example.webdevsp19s1deeshashahserverjava.model;
-
+import java.util.*;
 public class User {
 	private Integer id;
 	private String username;
@@ -7,11 +7,15 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private String role;
+	private List<Course> authoredCourses = new ArrayList<Course>();
+	
+	
 	public User() {}
 	
-	public User(int id, String username, String firstName, String lastName, String role) {
+	public User(int id, String username, String password, String firstName, String lastName, String role) {
 		this.id = id;
 		this.username = username;
+		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.role = role;
@@ -51,5 +55,13 @@ public class User {
 	}
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public List<Course> getAuthoredCourses() {
+		return authoredCourses;
+	}
+
+	public void setAuthoredCourses(List<Course> authoredCourses) {
+		this.authoredCourses = authoredCourses;
 	}
 }

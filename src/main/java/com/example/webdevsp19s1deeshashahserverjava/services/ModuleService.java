@@ -6,6 +6,7 @@ import com.example.webdevsp19s1deeshashahserverjava.model.Course;
 import com.example.webdevsp19s1deeshashahserverjava.model.Module;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,19 +16,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.*;
 
+import javax.servlet.http.HttpSession;
+
 @RestController
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true", allowedHeaders = "*")
 public class ModuleService {
+	int moduleId = 2000;
 	@Autowired
 	CourseService courseService = new CourseService();
 		
 	@GetMapping("/api/courses/{courseId}/modules")
-	public List<Module> findAllModules(@PathVariable("courseId") Integer cid){
-		return courseService.findCourseById(cid).getModules();
+	public List<Module> findAllModules(@PathVariable("courseId") Integer cid, HttpSession session){
+		return courseService.findCourseById(cid, session).getModules();
 	}
 	
 	@GetMapping("/api/modules/{mid}")
-	public Module findModuleById(@PathVariable("mid") Integer id) {
-		List<Course> courses = courseService.findAllCourses();
+	public Module findModuleById(@PathVariable("mid") Integer id, HttpSession session) {
+		List<Course> courses = courseService.findAllCourses(session);
 		for(Course course: courses) {
 			List<Module> modules = course.getModules();
 			for(Module module: modules) {
@@ -41,16 +46,20 @@ public class ModuleService {
 	}
 	
 	@PostMapping("/api/courses/{cid}/modules")
-	public Module createModule(@PathVariable("cid") Integer id, @RequestBody Module module) {
-		Course course = courseService.findCourseById(id);
+	public Module createModule(@PathVariable("cid") Integer id, @RequestBody Module module, HttpSession session) {
+		Course course = courseService.findCourseById(id, session);
+		module.setId(moduleId++);
+		if(module.getTitle().equals("")){
+			module.setTitle("New Module");
+		}
 		List<Module> modules = course.getModules();
 		modules.add(module);
 		return module;
 	}
 	
 	@PutMapping("/api/modules/{mid}")
-	public Module updateModule(@PathVariable("mid") Integer id, @RequestBody Module newModule) {
-		List<Course> courses = courseService.findAllCourses();
+	public Module updateModule(@PathVariable("mid") Integer id, @RequestBody Module newModule, HttpSession session) {
+		List<Course> courses = courseService.findAllCourses(session);
 		for(Course course: courses) {
 			List<Module> modules = course.getModules();
 			for(Module module: modules) {
@@ -64,8 +73,8 @@ public class ModuleService {
 	}
 	
 	@DeleteMapping("/api/modules/{mid}")
-	public void deleteModule(@PathVariable("mid") Integer id) {
-		List<Course> courses = courseService.findAllCourses();
+	public void deleteModule(@PathVariable("mid") Integer id, HttpSession session) {
+		List<Course> courses = courseService.findAllCourses(session);
 		for(Course course: courses) {
 			List<Module> modules = course.getModules();
 			for(Module module: modules) {
