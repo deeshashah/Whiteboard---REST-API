@@ -29,8 +29,8 @@ import javax.servlet.http.HttpSession;
 @CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true", allowedHeaders = "*")
 public class UserService {
 	int userId = 0;
-	User alice = new User(123, "alice","rabbit", "Alice", "Wonderland", "FACULTY");
-	User bob   = new User(234, "bob","rab", "Bob", "Marley", "FACULTY");
+	User alice = new User(123, "alice","rabbit", "Alice", "Wonderland", "FACULTY", "87645321934", "alice@gmail.com");
+	User bob   = new User(234, "bob","rab", "Bob", "Marley", "FACULTY", "9738432345", "bob@gmail.com");
 	List<User> users = new ArrayList<User>();
 	
 	List<Course> aliceCourses = new ArrayList<Course>();
@@ -190,6 +190,12 @@ public class UserService {
 	
 	@PostMapping("/api/register")
 	public User register(@RequestBody User user, HttpSession session) {
+		for(User u: users) {
+			if(u.getUsername().equals(user.getUsername())) {
+				
+				return null;
+			}
+		}
 		user.setId(userId++);
 		session.setAttribute("currUser", user);
 		users.add(user);
