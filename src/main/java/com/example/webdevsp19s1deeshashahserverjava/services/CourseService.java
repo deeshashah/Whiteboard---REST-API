@@ -28,7 +28,7 @@ import com.example.webdevsp19s1deeshashahserverjava.model.User;
 
 
 @RestController
-@CrossOrigin(origins = "http://faculty-whiteboard.herokuapp.com", allowCredentials = "true", allowedHeaders = "*")
+@CrossOrigin(allowCredentials = "true")
 public class CourseService {
 	int courseId = 1000;
 	List<Course> courses = new ArrayList<Course>();

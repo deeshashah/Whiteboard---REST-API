@@ -21,7 +21,7 @@ import java.util.*;
 import javax.servlet.http.HttpSession;
 
 @RestController
-@CrossOrigin(origins = "http://faculty-whiteboard.herokuapp.com", allowCredentials = "true", allowedHeaders = "*")
+@CrossOrigin(allowCredentials = "true")
 public class LessonService {
 	int lessonId = 4000;
 	
