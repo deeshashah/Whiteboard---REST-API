@@ -26,7 +26,7 @@ import java.util.*;
 import javax.servlet.http.HttpSession;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true", allowedHeaders = "*")
+@CrossOrigin(origins = "https://faculty-whiteboard.herokuapp.com", allowCredentials = "true", allowedHeaders = "*")
 public class UserService {
 	int userId = 0;
 	User alice = new User(123, "alice","rabbit", "Alice", "Wonderland", "FACULTY", "87645321934", "alice@gmail.com");

@@ -21,35 +21,35 @@ import java.util.*;
 import javax.servlet.http.HttpSession;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000",allowCredentials = "true", allowedHeaders = "*")
+@CrossOrigin(origins = "https://faculty-whiteboard.herokuapp.com", allowCredentials = "true", allowedHeaders = "*")
 public class TopicService {
 	int topicId = 9000;
-	
+
 	@Autowired
 	CourseService courseService = new CourseService();
-	
+
 	@Autowired
 	ModuleService moduleService = new ModuleService();
-	
+
 	@Autowired
 	LessonService lessonService = new LessonService();
-	
+
 	@GetMapping("/api/lesson/{lid}/topic")
-	public List<Topic> findAllTopics(@PathVariable("lid") Integer id, HttpSession session){
+	public List<Topic> findAllTopics(@PathVariable("lid") Integer id, HttpSession session) {
 		return lessonService.findLessonById(id, session).getTopics();
 	}
-	
+
 	@GetMapping("/api/topic/{tid}")
 	public Topic findTopicById(@PathVariable("tid") Integer id, HttpSession session) {
 		List<Course> courses = courseService.findAllCourses(session);
-		for(Course course: courses) {
+		for (Course course : courses) {
 			List<Module> modules = course.getModules();
-			for(Module module: modules) {
+			for (Module module : modules) {
 				List<Lesson> lessons = module.getLessons();
-				for(Lesson lesson: lessons) {
+				for (Lesson lesson : lessons) {
 					List<Topic> topics = lesson.getTopics();
-					for(Topic topic: topics) {
-						if(topic.getId().equals(id)) {
+					for (Topic topic : topics) {
+						if (topic.getId().equals(id)) {
 							return topic;
 						}
 					}
@@ -58,30 +58,30 @@ public class TopicService {
 		}
 		return null;
 	}
-	
+
 	@PostMapping("/api/lesson/{lid}/topic")
 	public Topic createTopic(@PathVariable("lid") Integer id, @RequestBody Topic topic, HttpSession session) {
 		topic.setId(topicId++);
 		Lesson lesson = lessonService.findLessonById(id, session);
-		if(topic.getTitle().equals("")){
+		if (topic.getTitle().equals("")) {
 			topic.setTitle("New Topic");
 		}
 		List<Topic> topics = lesson.getTopics();
 		topics.add(topic);
 		return topic;
 	}
-	
+
 	@PutMapping("/api/topic/{tid}")
 	public Topic updateTopic(@PathVariable("tid") Integer id, @RequestBody Topic newTopic, HttpSession session) {
 		List<Course> courses = courseService.findAllCourses(session);
-		for(Course course: courses) {
+		for (Course course : courses) {
 			List<Module> modules = course.getModules();
-			for(Module module: modules) {
+			for (Module module : modules) {
 				List<Lesson> lessons = module.getLessons();
-				for(Lesson lesson: lessons) {
+				for (Lesson lesson : lessons) {
 					List<Topic> topics = lesson.getTopics();
-					for(Topic topic: topics) {
-						if(topic.getId().equals(id)) {
+					for (Topic topic : topics) {
+						if (topic.getId().equals(id)) {
 							topic.setTitle(newTopic.getTitle());
 							return topic;
 						}
@@ -91,18 +91,18 @@ public class TopicService {
 		}
 		return null;
 	}
-	
+
 	@DeleteMapping("/api/topic/{tid}")
 	public void deleteTopic(@PathVariable("tid") Integer id, HttpSession session) {
 		List<Course> courses = courseService.findAllCourses(session);
-		for(Course course: courses) {
+		for (Course course : courses) {
 			List<Module> modules = course.getModules();
-			for(Module module: modules) {
+			for (Module module : modules) {
 				List<Lesson> lessons = module.getLessons();
-				for(Lesson lesson: lessons) {
+				for (Lesson lesson : lessons) {
 					List<Topic> topics = lesson.getTopics();
-					for(Topic topic: topics) {
-						if(topic.getId().equals(id)) {
+					for (Topic topic : topics) {
+						if (topic.getId().equals(id)) {
 							topics.remove(topic);
 							break;
 						}
