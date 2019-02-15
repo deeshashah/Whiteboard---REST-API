@@ -250,7 +250,7 @@ public class UserService {
 		
 		for(int i=0;i<users.size();i++){
 			if(users.get(i).getUsername().equals(id)){
-				users.get(i).setEmail(user.getPhone());
+				users.get(i).setEmail(user.getEmail());
 				users.get(i).setPhone(user.getPhone());
 				users.get(i).setRole(user.getRole());
 				//session.setAttribute("currUser", user);
