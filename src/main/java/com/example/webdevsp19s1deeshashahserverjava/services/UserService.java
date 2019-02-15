@@ -246,11 +246,14 @@ public class UserService {
 
 	@PutMapping("api/user/{userId}")
 	public @ResponseBody User updateUser(
-		@PathVariable("userId") Integer id, @RequestBody User user) {
+		@PathVariable("userId") String id, @RequestBody User user) {
 		
 		for(int i=0;i<users.size();i++){
-			if(users.get(i).getId().intValue()==id){
-				users.set(i, user);
+			if(users.get(i).getUsername().equals(id)){
+				users.get(i).setEmail(user.getPhone());
+				users.get(i).setPhone(user.getPhone());
+				users.get(i).setRole(user.getRole());
+				//session.setAttribute("currUser", user);
 				return user;
 			}
 		}

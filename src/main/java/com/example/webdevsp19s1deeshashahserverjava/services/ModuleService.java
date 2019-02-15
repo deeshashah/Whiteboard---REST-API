@@ -53,16 +53,16 @@ public class ModuleService {
 		module.setId(moduleId++);
 		if(module.getTitle().equals("")){
 			module.setTitle("New Module");
-			List<Lesson> lessons = new ArrayList<Lesson>();
-			Lesson l = new Lesson(777, "New Lesson");
-			
-			List<Topic> topics = new ArrayList<Topic>();
-			Topic t = new Topic(888, "New Topic");
-			topics.add(t);
-			l.setTopics(topics);
-			lessons.add(l);
-			module.setLessons(lessons);
 		}
+		List<Lesson> lessons = new ArrayList<Lesson>();
+		Lesson l = new Lesson(777, "New Lesson");
+		
+		List<Topic> topics = new ArrayList<Topic>();
+		Topic t = new Topic(888, "New Topic");
+		topics.add(t);
+		l.setTopics(topics);
+		lessons.add(l);
+		module.setLessons(lessons);
 		List<Module> modules = course.getModules();
 		modules.add(module);
 		return module;
