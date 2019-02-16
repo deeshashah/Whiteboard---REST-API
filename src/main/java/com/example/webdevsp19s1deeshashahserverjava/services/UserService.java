@@ -196,7 +196,6 @@ public class UserService {
 	
 	UserService(){
 		users.add(alice);
-		users.add(bob);
 	}
 
 	
