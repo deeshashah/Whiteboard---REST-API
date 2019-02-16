@@ -38,10 +38,22 @@ public class UserService {
 	Course cs5610 = new Course(123, "CS5610");
 	Course cs4500 = new Course(234, "CS4500");
 	
+	
+	
 	public List<Module> cs4500modules = new ArrayList<Module>();
 	Module cs4500W1 = new Module(123, "Week1");
 	Module cs4500W2 = new Module(234, "Week2");
 	
+	public List<Module> cs5610modules = new ArrayList<Module>();
+	Module cs5610W1 = new Module(555, "Week1");
+
+	List<Lesson> cs5610W1Lessons = new ArrayList<Lesson>();
+	Lesson w1React = new Lesson(777, "Week1")
+
+	List<Topic> reactTopics = new ArrayList<Topic>();
+	Topic topicStateless = new Topic(583, "Stateless component");
+	Topic topicStateful = new Topic(98, "Stateful Components");
+
 	List<Lesson> cs4500W1Lessons = new ArrayList<Lesson>();
 	Lesson w1Html = new Lesson(301, "HTML");
 	Lesson w1Css = new Lesson(302, "CSS");
@@ -124,6 +136,13 @@ public class UserService {
 		htmlTopics.add(topicDom);
 		htmlTopics.add(topicTags);
 		w1Html.setTopics(htmlTopics);
+
+		//setting react 
+		reactTopics.add(topicStateful);
+		reactTopics.add(topicStateless);
+		w1React.setTopics(reactTopics);
+
+		lessons.add()
 		
 		//setting lessons for css
 		cssTopics.add(topicBorders);
@@ -159,6 +178,11 @@ public class UserService {
 		
 		cs4500modules.add(cs4500W1);
 		cs4500modules.add(cs4500W2);
+
+		cs5610W1Lessons.add(w1React);
+		cs5610W1.setLessons(cs5610W1Lessons);
+		cs5610modules.add(cs5610W1);
+
 		
 		cs4500.setModules(cs4500modules);
 		courses.add(cs5610);
