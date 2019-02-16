@@ -48,7 +48,7 @@ public class UserService {
 	Module cs5610W1 = new Module(555, "Week1");
 
 	List<Lesson> cs5610W1Lessons = new ArrayList<Lesson>();
-	Lesson w1React = new Lesson(777, "Week1")
+	Lesson w1React = new Lesson(777, "Week1");
 
 	List<Topic> reactTopics = new ArrayList<Topic>();
 	Topic topicStateless = new Topic(583, "Stateless component");
@@ -142,7 +142,6 @@ public class UserService {
 		reactTopics.add(topicStateless);
 		w1React.setTopics(reactTopics);
 
-		lessons.add()
 		
 		//setting lessons for css
 		cssTopics.add(topicBorders);
